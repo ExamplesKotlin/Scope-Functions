@@ -75,6 +75,33 @@ fun <T> T.also2(body: (T) -> Unit) : T {
 }
 ```
 
+### Check this for iOS:
+
+[https://stackoverflow.com/questions/54966200/does-swift-have-standard-scope-functions-like-in-kotlin](https://stackoverflow.com/questions/54966200/does-swift-have-standard-scope-functions-like-in-kotlin)
+
+```
+extension Optional {
+    func `let`(do: (Wrapped)->()) {
+        guard let v = self else { return }
+        `do`(v)
+    }
+}
+
+var str: String? = "text"
+str.let {
+    print( $0 ) // prints `text`
+}
+str = nil
+
+str.let {
+    print( $0 ) // not executed if str == nil
+}
+```
+
+[kakajika/ScopeFuncs.swift](https://gist.github.com/kakajika/0bb3fd14f4afd5e5c2ec)
+
+[Making Kotlin Scope Functions in Swift](https://elye-project.medium.com/making-kotlin-scope-function-in-swift-ea694dafa059)
+
 
 
 
