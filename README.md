@@ -42,33 +42,34 @@ fun <T> T.apply2(body: T.() -> Unit) : T {
 }
 ```
 
-Custon `run`
+Custom `run`
 
 ```
 fun <T, U> T.run2(body: T.() -> U) : U {
     return this.body()
 }
 ```
--
+
+Custom `let`
 
 ```
-fun <T> T.apply2(body: T.() -> Unit) : T {
-    this.body()
-    return this
-}
-
-fun <T, U> T.run2(body: T.() -> U) : U {
-    return this.body()
-}
-
 fun <T, U> T.let2(body: (T) -> U) : U {
     return body(this)
 }
 
+```
+
+Custon `with`
+
+```
 fun <T, U> with2(receiver: T, body: T.() -> U) : U {
     return receiver.body()
 }
+```
 
+Custon `also`
+
+```
 fun <T> T.also2(body: (T) -> Unit) : T {
     body(this)
     return this
